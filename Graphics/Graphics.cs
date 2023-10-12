@@ -1,32 +1,47 @@
 ﻿using System;
 using Silk.NET.Input;
+using System.Reflection;
+using lizzie;
+using Silk.NET.Windowing;
 
 namespace QBSharp
 {
     public class Graphics
     {
-        public System.IntPtr windowhandle;
-        public Silk.NET.Windowing.IWindow window;
-        /// <summary>
-        /// Prepares a window image surface
-        /// </summary>
-        /// <returns>The image.</returns>
-        /// <param name="height">Height</param>
-        /// <param name="width">Width</param>
-        /// <param name="mode">Mode</param>
-        public Silk.NET.Windowing.IWindow NewImage(int height, int width, int mode = 0)
+        [Bind(Name = "NewImage")]
+        object NewImage(Binder<Graphics> binder, Arguments arguments)
         {
             Silk.NET.Windowing.WindowOptions options = Silk.NET.Windowing.WindowOptions.Default;
-            options.Size = new Silk.NET.Maths.Vector2D<int>(800, 600);
+            if(arguments.Count > 2)
+            {
+                throw new Exception("Too many arguments for NewImage");
+            }
+            options.Size = new Silk.NET.Maths.Vector2D<int>(Convert.ToInt32(arguments.Get(0)), Convert.ToInt32(arguments.Get(1)));
             options.Title = "untitled";
             window = Silk.NET.Windowing.Window.Create(options);
 
             window.Load += Window_Load;
             window.Update += Window_Update;
             window.Render += Window_Render;
-
+            //window.Run();
             return window;
         }
+        public System.IntPtr windowhandle;
+        public Silk.NET.Windowing.IWindow window;
+
+        //public Silk.NET.Windowing.IWindow NewImage(int height, int width, int mode = 0)
+        //{
+        //    Silk.NET.Windowing.WindowOptions options = Silk.NET.Windowing.WindowOptions.Default;
+        //    options.Size = new Silk.NET.Maths.Vector2D<int>(800, 600);
+        //    options.Title = "untitled";
+        //    window = Silk.NET.Windowing.Window.Create(options);
+
+        //    window.Load += Window_Load;
+        //    window.Update += Window_Update;
+        //    window.Render += Window_Render;
+
+        //    return window;
+        //}
 
         private void Window_Load()
         {

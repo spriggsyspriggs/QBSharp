@@ -116,6 +116,12 @@
     <Reference Include="Silk.NET.Input.Sdl">
       <HintPath>..\packages\Silk.NET.Input.Sdl.2.17.1\lib\netstandard2.0\Silk.NET.Input.Sdl.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="lizzie">
+      <HintPath>..\packages\lizzie.0.8.1\lib\netstandard2.0\lizzie.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="QBSharp.cs" />

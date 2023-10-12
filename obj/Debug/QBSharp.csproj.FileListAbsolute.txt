@@ -155,3 +155,7 @@
 /home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/Silk.NET.SDL.xml
 /home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/Silk.NET.Windowing.Sdl.xml
 /home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/Silk.NET.Input.Sdl.xml
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/lizzie.dll
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/Newtonsoft.Json.dll
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/Newtonsoft.Json.xml
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/lizzie.xml

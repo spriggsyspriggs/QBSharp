@@ -14,7 +14,7 @@ namespace QBSharp
         /// <param name="singleFilterDescription">Single filter <paramref name="singleFilterDescription"/>(e.g., "Image Files")</param>
         public string SaveFileDialog(string title, string defaultPathAndFile = "", string filterPattern = "", string singleFilterDescription = "")
         {
-            Gtk.FileChooserDialog saveDialog = new Gtk.FileChooserDialog("Save As", null, Gtk.FileChooserAction.Save, "Cancel", Gtk.ResponseType.Cancel, "Save", Gtk.ResponseType.Accept)
+            Gtk.FileChooserDialog saveDialog = new Gtk.FileChooserDialog(title, null, Gtk.FileChooserAction.Save, "Cancel", Gtk.ResponseType.Cancel, "Save", Gtk.ResponseType.Accept)
             {
                 CanDefault = true
             };
@@ -42,8 +42,12 @@ namespace QBSharp
             }
             return "";
         }
-        string OpenFileDialog()
+        string OpenFileDialog(string title, string defaultPathAndFile = "", string filterPattern = "", string singleFilterDescription = "")
         {
+            Gtk.FileChooserDialog openDialog = new Gtk.FileChooserDialog(title, null, Gtk.FileChooserAction.Open, "Cancel", Gtk.ResponseType.Cancel, "Open", Gtk.ResponseType.Accept)
+            {
+                CanDefault = true
+            };
             return "";
         }
         string SelectFolderDialog()

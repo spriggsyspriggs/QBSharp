@@ -1,0 +1,8 @@
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/QB_SharpLibrary.pdb
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/System.Reflection.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_Sharp.csproj.AssemblyReference.cache
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_Sharp.csproj.CoreCompileInputs.cache
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_Sharp.csproj.CopyComplete
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_SharpLibrary.pdb

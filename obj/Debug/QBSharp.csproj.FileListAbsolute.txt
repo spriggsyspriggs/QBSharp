@@ -1,0 +1,15 @@
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/QB_SharpLibrary.pdb
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/bin/Debug/System.Reflection.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QBSharp.csproj.CoreCompileInputs.cache
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QBSharp.csproj.CopyComplete
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QB_SharpLibrary/QB_SharpLibrary/obj/Debug/QB_SharpLibrary.pdb
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/QB_SharpLibrary.pdb
+/home/spriggsy/Projects/QBSharp/QBSharp/bin/Debug/System.Reflection.dll
+/home/spriggsy/Projects/QBSharp/QBSharp/obj/Debug/QBSharp.csproj.AssemblyReference.cache
+/home/spriggsy/Projects/QBSharp/QBSharp/obj/Debug/QBSharp.csproj.CoreCompileInputs.cache
+/home/spriggsy/Projects/QBSharp/QBSharp/obj/Debug/QBSharp.csproj.CopyComplete
+/home/spriggsy/Projects/QBSharp/QBSharp/obj/Debug/QB_SharpLibrary.dll
+/home/spriggsy/Projects/QBSharp/QBSharp/obj/Debug/QB_SharpLibrary.pdb

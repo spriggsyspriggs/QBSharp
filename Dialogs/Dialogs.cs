@@ -4,15 +4,14 @@ namespace QBSharp
 {
     public class Dialogs
     {
-        private string _filename;
-        public string FileName
-        {
-            get
-            {
-                return _filename;
-            }
-        }
-
+        /// <summary>
+        /// Saves the file dialog.
+        /// </summary>
+        /// <returns>The file dialog.</returns>
+        /// <param name="title">Dialog box title</param>
+        /// <param name="defaultPathAndFile">Default path that will be used by the dialog box if not changed by the user</param>
+        /// <param name="filterPattern">File filters separated using "|" (e.g., "*.png|*.jpg|*.gif")</param>
+        /// <param name="singleFilterDescription">Single filter <paramref name="singleFilterDescription"/>(e.g., "Image Files")</param>
         public string SaveFileDialog(string title, string defaultPathAndFile = "", string filterPattern = "", string singleFilterDescription = "")
         {
             Gtk.FileChooserDialog saveDialog = new Gtk.FileChooserDialog("Save As", null, Gtk.FileChooserAction.Save, "Cancel", Gtk.ResponseType.Cancel, "Save", Gtk.ResponseType.Accept)
@@ -39,8 +38,7 @@ namespace QBSharp
             saveDialog.Hide();
             if (result == (int)Gtk.ResponseType.Accept)
             {
-                _filename = saveDialog.Filename;
-                return FileName;
+                return saveDialog.Filename;
             }
             return "";
         }

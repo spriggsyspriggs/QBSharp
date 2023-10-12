@@ -1,10 +1,11 @@
 ﻿using System;
 namespace QBSharp
 {
-    public class MyClass
+    public class QBSharp
     {
-        public MyClass()
+        public QBSharp()
         {
+
         }
     }
 }

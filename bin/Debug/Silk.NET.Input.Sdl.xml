@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Input.Sdl</name>
+    </assembly>
+    <members>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.StandardCursor">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.CursorMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.HotspotX">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.HotspotY">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlCursor.Image">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Sdl.SdlCursor.IsSupported(Silk.NET.Input.CursorMode)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Sdl.SdlCursor.IsSupported(Silk.NET.Input.StandardCursor)">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlMouse.IsRaw">
+            <summary>
+            Used by SdlCursor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Sdl.SdlMouse.AggregatePoint">
+            <summary>
+            The current raw mouse position. This is done because when SDL is in raw mouse mode, it doesn't allow
+            unlimited mouse movement like GLFW does so we have to simulate it.
+            </summary>
+        </member>
+    </members>
+</doc>

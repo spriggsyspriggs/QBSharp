@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Input.Glfw</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.Input.Glfw.GlfwCursor">
+            <summary>
+            A GLFW-based mouse cursor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.StandardCursor">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.CursorMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.HotspotX">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.HotspotY">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Input.Glfw.GlfwCursor.Image">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Glfw.GlfwCursor.IsSupported(Silk.NET.Input.CursorMode)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Glfw.GlfwCursor.IsSupported(Silk.NET.Input.StandardCursor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Silk.NET.Input.Glfw.GlfwInputPlatform">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Glfw.GlfwInputPlatform.IsApplicable(Silk.NET.Windowing.IView)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.Glfw.GlfwInputPlatform.CreateInput(Silk.NET.Windowing.IView)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

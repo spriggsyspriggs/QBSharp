@@ -1,0 +1,1036 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Windowing.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.Windowing.ContextAPI">
+            <summary>
+            Represents which API the graphics context should use.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextAPI.None">
+            <summary>
+            Don't use any API. This is necessary for linking an external API, such as Vulkan, to the window.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextAPI.Vulkan">
+            <summary>
+            Use Vulkan. Silk.NET doesn't support this yet.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextAPI.OpenGL">
+            <summary>
+            Use core OpenGL. This is standard for software intended for desktop computers.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextAPI.OpenGLES">
+            <summary>
+            Use OpenGL ES. This is standard for software intended to be compatible with embedded systems, such as phones.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.ContextFlags">
+            <summary>
+            Represents flags related to the OpenGL context.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextFlags.Default">
+            <summary>
+            No flags enabled.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextFlags.Debug">
+            <summary>
+            Enables debug context; debug contexts provide more debugging info, but can run slower.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextFlags.ForwardCompatible">
+            <summary>
+            Enables forward compatability; this context won't support anything marked as deprecated in the current
+            version.
+            </summary>
+            <remarks>On OpenGL contexts older than 3.0, this flag does nothing.</remarks>
+        </member>
+        <member name="T:Silk.NET.Windowing.ContextProfile">
+            <summary>
+            Represents the context profile OpenGL should use.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextProfile.Core">
+            <summary>
+            Uses a core OpenGL context, which removes some deprecated functionality.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.ContextProfile.Compatability">
+            <summary>
+            Uses a compatability OpenGL context, allowing for some deprecated functionality. This should only ever be
+            used for maintaining legacy code; no newly-written software should use this.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.WindowBorder">
+            <summary>
+            Represents the window border.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowBorder.Resizable">
+            <summary>
+            The window can be resized by clicking and dragging its border.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowBorder.Fixed">
+            <summary>
+            The window border is visible, but cannot be resized. All window-resizings must happen solely in the code.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowBorder.Hidden">
+            <summary>
+            The window border is hidden.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.WindowState">
+            <summary>
+            Represents the current state of the window.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowState.Normal">
+            <summary>
+            The window is in its regular configuration.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowState.Minimized">
+            <summary>
+            The window has been minimized to the task bar.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowState.Maximized">
+            <summary>
+            The window has been maximized, covering the entire desktop, but not the taskbar.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.WindowState.Fullscreen">
+            <summary>
+            The window has been fullscreened, covering the entire surface of the monitor.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.IMonitor">
+            <summary>
+            An interface representing a monitor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IMonitor.Name">
+            <summary>
+            The name of this monitor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IMonitor.Index">
+            <summary>
+            The index of this monitor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IMonitor.Bounds">
+            <summary>
+            The bounds of this monitor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IMonitor.VideoMode">
+            <summary>
+            The current video mode of this monitor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IMonitor.Gamma">
+            <summary>
+            This monitor's gamma correction.
+            </summary>
+            <remarks>
+            Only supported by GLFW, has no effect on SDL.
+            </remarks>
+        </member>
+        <member name="M:Silk.NET.Windowing.IMonitor.GetAllVideoModes">
+            <summary>
+            Get all video modes that this monitor supports.
+            </summary>
+            <returns>An array of all video modes.</returns>
+        </member>
+        <member name="T:Silk.NET.Windowing.IView">
+            <summary>
+            Represents a window view.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IView.Handle">
+            <summary>
+            A handle to the underlying window.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IView.IsClosing">
+            <summary>
+            Determines whether the underlying platform has requested the window to close.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IView.Time">
+            <summary>
+            Elapsed time in seconds since the View was initialized.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IView.FramebufferSize">
+            <summary>
+            The size of the framebuffer. May differ from the window size.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IView.IsInitialized">
+            <summary>
+            Determines if the window is initialized.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.Resize">
+            <summary>
+            Raised when the window is resized.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.FramebufferResize">
+            <summary>
+            Raised when the window's framebuffer is resized.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.Closing">
+            <summary>
+            Raised when the window is about to close.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.FocusChanged">
+            <summary>
+            Raised when the window focus changes.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.Load">
+            <summary>
+            Raised when the window first begins to run.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.Update">
+            <summary>
+            Raised when an update should be run.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IView.Render">
+            <summary>
+            Raised when a frame should be rendered.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.Initialize">
+            <summary>
+            Creates the window on the underlying platform.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.DoRender">
+            <summary>
+            Calls the Render event. On a multi-threaded window, this will run on an internally managed thread.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.DoUpdate">
+            <summary>
+            Calls the Update event. On a multi-threaded window, this can run on any thread.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.DoEvents">
+            <summary>
+            Polls the underlying platform for events.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.ContinueEvents">
+            <summary>
+            When using <see cref="P:Silk.NET.Windowing.WindowOptions.IsEventDriven"/> = true, wakes the main thread from
+            its blocking wait on incoming events.  Can be called from any thread.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.Reset">
+            <summary>
+            Unloads the window on the underlying platform.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.Close">
+            <summary>
+            Close this window.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.PointToClient(Silk.NET.Maths.Vector2D{System.Int32})">
+            <summary>
+            Converts this point to client coordinates.
+            </summary>
+            <param name="point">The point to transform.</param>
+            <returns>The transformed point.</returns>
+            <remarks>Expects screen coordinates as input.</remarks>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.PointToScreen(Silk.NET.Maths.Vector2D{System.Int32})">
+            <summary>
+            Converts this point to screen coordinates.
+            </summary>
+            <param name="point">The point to transform.</param>
+            <returns>The transformed point.</returns>
+            <remarks>Expects client coordinates as input.</remarks>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.PointToFramebuffer(Silk.NET.Maths.Vector2D{System.Int32})">
+            <summary>
+            Converts this point to framebuffer coordinates.
+            </summary>
+            <param name="point">The point to transform.</param>
+            <returns>The transformed point.</returns>
+            <remarks>Expects client coordinates as input.</remarks>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.Invoke(System.Delegate,System.Object[])">
+            <summary>
+            Invokes this delegate on the window's main thread, with the provided arguments.
+            </summary>
+            <param name="d">The delegate to run.</param>
+            <param name="args">The delegate's arguments.</param>
+            <returns>An object returned from the delegate.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.IView.Run(System.Action)">
+            <summary>
+            Initiates a render loop in which the given callback is called as fast as the underlying platform can manage.
+            </summary>
+            <param name="onFrame">The callback to run each frame.</param>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.ShouldSwapAutomatically">
+            <summary>
+            If true, SwapBuffers will be called automatically at the end of each Render event.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.IsEventDriven">
+            <summary>
+            If true, instead of executing the Update and Render events at a fixed interval, they will only be executed
+            once there are events waiting to be processed.
+            </summary>
+            <remarks>
+            The <see cref="P:Silk.NET.Windowing.IViewProperties.UpdatesPerSecond"/> and <see cref="P:Silk.NET.Windowing.IViewProperties.FramesPerSecond"/> will still be respected and treated as
+            the "maximum" number of frames per second. Typically, the time between events is greater than the frame
+            period, however.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.IsContextControlDisabled">
+            <summary>
+            If true, disables automatically controlling the OpenGL context on the thread on which the
+            <see cref="E:Silk.NET.Windowing.IView.Render"/> event is called i.e. disables moving the OpenGL context to that thread, or
+            updating the <see cref="M:Silk.NET.Core.Contexts.IGLContext.SwapInterval(System.Int32)"/> in response to the <see cref="P:Silk.NET.Windowing.IViewProperties.VSync"/> property. This
+            property will also disable automatic buffer swapping regardless of whether
+            <see cref="P:Silk.NET.Windowing.IViewProperties.ShouldSwapAutomatically" /> is true or not.
+            </summary>
+            <remarks>
+            This is useful for scenarios where you are temporarily moving the OpenGL context to a separate thread to
+            load resources in the background, for instance. You can toggle this on and off as many times as you want
+            throughout the window/view's lifetime.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.Size">
+            <summary>
+            The size of the window in pixels.
+            </summary>
+            <remarks>
+            <para>
+            This will be replaced with an integer vector once System.Numerics supports them.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.FramesPerSecond">
+            <summary>
+            The number of rendering operations to run every second.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.UpdatesPerSecond">
+            <summary>
+            The number of update operations to run every second.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.API">
+            <summary>
+            The graphics API to use, and associated configurations.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.VSync">
+            <summary>
+            Whether or not VSync is enabled for this view.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.VideoMode">
+            <summary>
+            The video mode.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.PreferredDepthBufferBits">
+            <summary>
+            Preferred depth buffer bits of the window's framebuffer.
+            </summary>
+            <remarks>
+            Pass <c>null</c> or <c>-1</c> to use the system default. 
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.PreferredStencilBufferBits">
+            <summary>
+            Preferred stencil buffer bits of the window's framebuffer.
+            </summary>
+            <remarks>
+            Pass <c>null</c> or <c>-1</c> to use the system default. 
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.PreferredBitDepth">
+            <summary>
+            Preferred red, green, blue, and alpha bits of the window's framebuffer.
+            </summary>
+            <remarks>
+            Pass <c>null</c> or <c>-1</c> for any of the axes to use the system default. 
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IViewProperties.Samples">
+            <summary>
+            The number of samples per pixel to use for multisampling on the window's framebuffer.
+            </summary>
+            <remarks>
+            Pass <c>null</c> or <c>-1</c> to use the system default.
+            </remarks>
+        </member>
+        <member name="T:Silk.NET.Windowing.IWindow">
+            <summary>
+            An interface representing a window.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindow.Parent">
+            <summary>
+            Gets the window host on which this window is active.
+            </summary>
+            <remarks>
+            This may be a <see cref="T:Silk.NET.Windowing.IWindow"/> or a <see cref="T:Silk.NET.Windowing.IMonitor"/>.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindow.Monitor">
+            <summary>
+            Gets the monitor on which this window is active.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindow.IsClosing">
+            <summary>
+            Gets or sets whether the window has been requested to close.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindow.BorderSize">
+            <summary>
+            Gets the distances in screen coordinates from the edges of the content area to the corresponding edges of
+            the full window.
+            </summary>
+            <remarks>
+            Because these are distances and not coordinates, they are always zero or positive.
+            </remarks>
+            <seealso cref="M:Silk.NET.Windowing.WindowExtensions.GetFullSize(Silk.NET.Windowing.IWindow)"/>
+        </member>
+        <member name="E:Silk.NET.Windowing.IWindow.Move">
+            <summary>
+            Raised when the window is moved.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IWindow.StateChanged">
+            <summary>
+            Raised when the window state is changed.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Windowing.IWindow.FileDrop">
+            <summary>
+            Raised when the user drops files onto the window.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindow.SetWindowIcon(System.ReadOnlySpan{Silk.NET.Core.RawImage})">
+            <summary>
+            Sets the window icons.
+            </summary>
+            <param name="icons">Either a collection of window icons, or null to set to the default icon.</param>
+        </member>
+        <member name="T:Silk.NET.Windowing.IWindowHost">
+            <summary>
+            Represents a host on which windows can be created.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowHost.CreateWindow(Silk.NET.Windowing.WindowOptions)">
+            <summary>
+            Creates a window on this host.
+            </summary>
+            <remarks>
+            If the window host is a monitor, the window will be created on the given monitor.
+            If the window host is another window, if the underlying API supports it a child window will be created
+            with the current window as the parent.
+            If the window host is a window platform, the window may be created on any monitor (usually the main monitor)
+            and will have no parent window. Note that the GLFW backend does not support child windows.
+            </remarks>
+            <returns>The created window.</returns>
+        </member>
+        <member name="T:Silk.NET.Windowing.IWindowPlatform">
+            <summary>
+            An interface that provides windowing for its respective native backend.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowPlatform.IsApplicable">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Silk.NET.Windowing.IWindowPlatform"/> should be used, based on the
+            current runtime/environment.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowPlatform.GetView(System.Nullable{Silk.NET.Windowing.ViewOptions})">
+            <summary>
+            Gets or creates a window view.
+            On desktop platforms, this mimics GetWindow unless you pass null to the opts parameter. In which case,
+            this will return the last created window.
+            On mobile platforms, this will create a view for the given platform if one doesn't exist, or 
+            </summary>
+            <param name="opts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowPlatform.ClearContexts">
+            <summary>
+            Clears all current contexts on this thread.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowPlatform.GetMonitors">
+            <summary>
+            Gets all monitors present on this window platform.
+            </summary>
+            <returns>All monitors present on this window platform</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowPlatform.GetMainMonitor">
+            <summary>
+            Gets the main monitor.
+            </summary>
+            <returns>The main monitor.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.IWindowPlatform.IsSourceOfView(Silk.NET.Windowing.IView)">
+            <summary>
+            Gets whether the given view is sourced from this platform.
+            </summary>
+            <param name="view">The view to check.</param>
+            <returns>Whether the view is sourced from this platform.</returns>
+        </member>
+        <member name="T:Silk.NET.Windowing.IWindowProperties">
+            <summary>
+            Contains all window properties.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.IsVisible">
+            <summary>
+            Whether or not the window is visible.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.Position">
+            <summary>
+            The position of the window. If set to -1, use the backend default.
+            </summary>
+            <remarks>
+            <para>
+            This will be replaced with an integer vector once System.Numerics supports them.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.Size">
+            <summary>
+            The size of the window in pixels.
+            </summary>
+            <remarks>
+            <para>
+            This will be replaced with an integer vector once System.Numerics supports them.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.Title">
+            <summary>
+            The window title.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.WindowState">
+            <summary>
+            The window state.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.WindowBorder">
+            <summary>
+            The window border.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.TransparentFramebuffer">
+            <summary>
+            Whether or not the window's framebuffer should be transparent.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.TopMost">
+            <summary>
+            Whether or not the window will be on the top of all the other windows.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.SharedContext">
+            <summary>
+            The context with which this window's context's resources are shared.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.IWindowProperties.WindowClass">
+            <summary>
+            Window class name used in systems like X11.
+            Also known as WM_CLASS.
+            </summary>
+            <remarks>
+            If omitted the following default values are used:
+            - The name of the main assembly without extension
+            - "Silk.NET" if the name of the main assembly could not be determined
+            </remarks>
+        </member>
+        <member name="T:Silk.NET.Windowing.Internals.ViewImplementationBase">
+            <summary>
+            Abstracts away common view functions to ease implementation of the windowing API.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Internals.ViewImplementationBase.#ctor(Silk.NET.Windowing.ViewOptions)">
+            <summary>
+            Creates a base view with the given options.
+            </summary>
+            <param name="opts">The options, used to configure the view.</param>
+        </member>
+        <member name="T:Silk.NET.Windowing.Internals.WindowImplementationBase">
+            <summary>
+            Abstracts away common window functions to ease implementation of the windowing API.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Internals.WindowImplementationBase.#ctor(Silk.NET.Windowing.WindowOptions)">
+            <summary>
+            Creates a base window with the given options.
+            </summary>
+            <param name="optionsCache">The options, used to configure the view.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.Monitor.GetMonitors(Silk.NET.Windowing.IView)">
+            <summary>
+            Gets all monitors present on this window platform.
+            </summary>
+            <returns>All monitors present on this window platform</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.Monitor.GetMainMonitor(Silk.NET.Windowing.IView)">
+            <summary>
+            Gets the main monitor.
+            </summary>
+            <returns>The main monitor.</returns>
+        </member>
+        <member name="T:Silk.NET.Windowing.APIVersion">
+            <summary>
+            Represents the desired version of an API.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.APIVersion.MajorVersion">
+            <summary>
+            The major version of the API.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Windowing.APIVersion.MinorVersion">
+            <summary>
+            The minor version of the API.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.APIVersion.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new APIVersion from two integers.
+            </summary>
+            <param name="majorVersion">The major version to use.</param>
+            <param name="minorVersion">The minor version to use.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.APIVersion.#ctor(System.Version)">
+            <summary>
+            Creates a new APIVersion from a <see cref="T:System.Version" />
+            </summary>
+            <param name="version">The version to use.</param>
+        </member>
+        <member name="T:Silk.NET.Windowing.GraphicsAPI">
+            <summary>
+            Represents the context API, and associated configuration, that the window should use.
+            </summary>
+            <remarks>
+            <para>
+            By default, this struct uses OpenGL 3.3, core profile, forward-compatable.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.API">
+            <summary>
+            The rendering API to use.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.Profile">
+            <summary>
+            The profile to use.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.Flags">
+            <summary>
+            Context creation flags.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.Version">
+            <summary>
+            The version of the API to use.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.GraphicsAPI.#ctor(Silk.NET.Windowing.ContextAPI,Silk.NET.Windowing.ContextProfile,Silk.NET.Windowing.ContextFlags,Silk.NET.Windowing.APIVersion)">
+            <summary>
+            Create a new instance of the GraphicsAPI struct.
+            </summary>
+            <param name="api">The context API to use.</param>
+            <param name="profile">The context profile to use.</param>
+            <param name="flags">The context flags to use.</param>
+            <param name="apiVersion">The API version to use.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.GraphicsAPI.#ctor(Silk.NET.Windowing.ContextAPI,Silk.NET.Windowing.APIVersion)">
+            <summary>
+            Create a new instance of the GraphicsAPI struct, implicitly using the core profile and default context
+            flags of the given api.
+            </summary>
+            <param name="api">The context API to use.</param>
+            <param name="apiVersion">The API version to use.</param>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.Default">
+            <summary>
+            The default graphics API. This is OpenGL 3.3 core profile, with forward compatability enabled.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.DefaultVulkan">
+            <summary>
+            The default vulkan graphics API. This is Vulkan 1.1.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.GraphicsAPI.None">
+            <summary>
+            No graphics API.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.VideoMode.Resolution">
+            <summary>
+            Resolution of the full screen window.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.VideoMode.RefreshRate">
+            <summary>
+            Refresh rate of the full screen window in Hz.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.VideoMode.AspectRatioEstimate">
+            <summary>
+            Aspect ratio of the full screen window. This value will not be 100% accurate to the actual value, however
+            is more accurate to what a user may expect the ratio to be (for example a resolution of 1366x768 will appear
+            as 16:9, even though it is not quite 16:9 in reality).
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.VideoMode.Default">
+            <summary>
+            The default video mode. This uses the window size for resolution and doesn't care about other values.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.ViewOptions">
+            <summary>
+            Contains all view properties, used for view creation.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.ShouldSwapAutomatically">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.IsEventDriven">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.IsContextControlDisabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.Silk#NET#Windowing#IViewProperties#Size">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.FramesPerSecond">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.UpdatesPerSecond">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.API">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.VSync">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.VideoMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.PreferredDepthBufferBits">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.PreferredStencilBufferBits">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.PreferredBitDepth">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.Samples">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Windowing.ViewOptions.#ctor(System.Double,System.Double,Silk.NET.Windowing.GraphicsAPI,System.Boolean,System.Boolean,Silk.NET.Windowing.VideoMode,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Silk.NET.Maths.Vector4D{System.Int32}},System.Boolean,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Creates a new WindowOptions struct.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.ViewOptions.#ctor(Silk.NET.Windowing.WindowOptions)">
+            <summary>
+            Creates a ViewOptions struct from the given WindowOptions.
+            </summary>
+            <param name="opts">The window options to trim down.</param>
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.Default">
+            <summary>
+            Convenience wrapper around creating a new WindowProperties with sensible defaults.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.ViewOptions.DefaultVulkan">
+            <summary>
+            Convenience wrapper around creating a new WindowProperties with sensible values, intended for use with Vulkan.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.WindowOptions">
+            <summary>
+            Contains all window properties, used for window creation.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowOptions.#ctor(Silk.NET.Windowing.ViewOptions)">
+            <summary>
+            Creates an instance of WindowOptions from an existing ViewOptions struct.
+            </summary>
+            <param name="opts">The view options to copy where applicable.</param>
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.IsVisible">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.ShouldSwapAutomatically">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.IsEventDriven">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.IsContextControlDisabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.VideoMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.PreferredDepthBufferBits">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.PreferredStencilBufferBits">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.PreferredBitDepth">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.Samples">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.Position">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.Size">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.FramesPerSecond">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.UpdatesPerSecond">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.API">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.VSync">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.Title">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.WindowState">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.WindowBorder">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.TransparentFramebuffer">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.TopMost">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.SharedContext">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.WindowClass">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowOptions.#ctor(System.Boolean,Silk.NET.Maths.Vector2D{System.Int32},Silk.NET.Maths.Vector2D{System.Int32},System.Double,System.Double,Silk.NET.Windowing.GraphicsAPI,System.String,Silk.NET.Windowing.WindowState,Silk.NET.Windowing.WindowBorder,System.Boolean,System.Boolean,Silk.NET.Windowing.VideoMode,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Silk.NET.Maths.Vector4D{System.Int32}},System.Boolean,System.Boolean,System.Boolean,Silk.NET.Core.Contexts.IGLContext,System.Nullable{System.Int32},System.String,System.Boolean)">
+            <summary>
+            Creates a new WindowOptions struct.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.Default">
+            <summary>
+            Convenience wrapper around creating a new WindowProperties with sensible defaults.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowOptions.DefaultVulkan">
+            <summary>
+            Convenience wrapper around creating a new WindowProperties with sensible values, intended for use with Vulkan.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Windowing.Window">
+            <summary>
+            Convenience wrapper for easily creating a Silk.NET window.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.GetWindowPlatform(System.Boolean)">
+            <summary>
+            Gets the first platform registered that is applicable and isn't view-only.
+            </summary>
+            <returns>The first platform registered that is applicable and isn't view-only.</returns>
+        </member>
+        <member name="P:Silk.NET.Windowing.Window.IsViewOnly">
+            <summary>
+            Gets whether this platform only supports window views. If false, this means that you may use desktop
+            functionality with your applications.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.Create(Silk.NET.Windowing.WindowOptions)">
+            <summary>
+            Create a window on the current platform.
+            </summary>
+            <param name="options">The window to use.</param>
+            <returns>A Silk.NET window using the current platform.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.GetView(System.Nullable{Silk.NET.Windowing.ViewOptions})">
+            <summary>
+            Create a view on the current platform.
+            </summary>
+            <param name="options">The window to use.</param>
+            <returns>A Silk.NET window using the current platform.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.ClearCurrentContexts(Silk.NET.Windowing.IView)">
+            <summary>
+            Clears all current contexts for this backend on the current thread.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.Prioritize(Silk.NET.Windowing.IWindowPlatform)">
+            <summary>
+            Adds/moves this window platform to the top of the platform list, to ensure that <see cref="T:Silk.NET.Windowing.Window"/>
+            functions check/use the provided platform first.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.PrioritizeGlfw">
+            <summary>
+            If added, moves the GLFW platform to the top of the platform list, to ensure that <see cref="T:Silk.NET.Windowing.Window"/>
+            functions check/use the provided platform first.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.PrioritizeSdl">
+            <summary>
+            If added, moves the SDL platform to the top of the platform list, to ensure that <see cref="T:Silk.NET.Windowing.Window"/>
+            functions check/use the provided platform first.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.Add(Silk.NET.Windowing.IWindowPlatform)">
+            <summary>
+            Adds this window platform to the platform list. Shouldn't be used unless writing your own windowing backend.
+            </summary>
+            <param name="platform">The platform to add.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.Remove(Silk.NET.Windowing.IWindowPlatform)">
+            <summary>
+            Removes this window platform from the platform list. Shouldn't be used unless writing your own windowing backend.
+            </summary>
+            <param name="platform">The platform to remove.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.TryAdd(System.String)">
+            <summary>
+            Attempts to load the given assembly by name, checks for a <see cref="T:Silk.NET.Windowing.IWindowPlatform"/>, if one is found it
+            is added to the list. Shouldn't be used unless writing your own windowing backend.
+            </summary>
+            <param name="assemblyName">The assembly's name to load.</param>
+            <returns>Whether the operation was successful.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.Window.GetOrDefault``1">
+            <summary>
+            Gets the instance of the given window platform type if added, or <c>default</c> if the window platform is
+            not registered with <see cref="P:Silk.NET.Windowing.Window.Platforms"/>.
+            </summary>
+            <typeparam name="T">The type of the window platform to get.</typeparam>
+            <returns>The instance of the window platform type or <c>default</c></returns>
+        </member>
+        <member name="T:Silk.NET.Windowing.WindowExtensions">
+            <summary>
+            Extensions for IWindow
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.Invoke``1(Silk.NET.Windowing.IView,System.Func{``0})">
+            <summary>
+            Executes a Func&lt;T&gt; delegate on the given view.
+            </summary>
+            <param name="view">The view to invoke on.</param>
+            <param name="t">The function to invoke.</param>
+            <typeparam name="T">Type of the function.</typeparam>
+            <remarks>This function is not applicable on single-threaded windows</remarks>
+            <returns>The return value of the given delegate.</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.Invoke(Silk.NET.Windowing.IView,System.Action)">
+            <summary>
+            Executes an <see cref="T:System.Action"/> on the given view.
+            </summary>
+            <param name="view">The view to invoke on.</param>
+            <param name="t">The action to invoke.</param>
+            <remarks>This function is not applicable on single-threaded windows</remarks>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.Run(Silk.NET.Windowing.IView)">
+            <summary>
+            Start the default event loop on this view.
+            </summary>
+            <param name="view">The view to begin the loop on.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.GetFullSize(Silk.NET.Windowing.IWindow)">
+            <summary>
+            Gets the full size of the given window including its borders.
+            </summary>
+            <param name="window">The window to get size information from.</param>
+            <returns>The full size of the window (including both content area and borders)</returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.Center(Silk.NET.Windowing.IWindow,Silk.NET.Windowing.IMonitor)">
+            <summary>
+            Centers this window to the given monitor or, if null, the current monitor the window's on.
+            </summary>
+            <param name="window">The window to center.</param>
+            <param name="monitor">The specific monitor to center the window to, if any.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.SetDefaultIcon(Silk.NET.Windowing.IWindow)">
+            <summary>
+            Sets the window icon to default on the given window.
+            </summary>
+            <param name="window">The window.</param>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowExtensions.SetWindowIcon(Silk.NET.Windowing.IWindow,Silk.NET.Core.RawImage@)">
+            <summary>
+            Sets a single window icon on the given window.
+            </summary>
+            <param name="window">The window.</param>
+            <param name="icon">The icon to set.</param>
+        </member>
+        <member name="T:Silk.NET.Windowing.WindowPlatformAttribute">
+            <summary>
+            An assembly attribute which points the registrar to a type that implements <see cref="T:Silk.NET.Windowing.IWindowPlatform"/>
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.WindowPlatformAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a <see cref="T:Silk.NET.Windowing.WindowPlatformAttribute"/> using the given type.
+            </summary>
+            <param name="type">The <see cref="T:Silk.NET.Windowing.IWindowPlatform"/> type.</param>
+        </member>
+        <member name="P:Silk.NET.Windowing.WindowPlatformAttribute.Type">
+            <summary>
+            The <see cref="T:Silk.NET.Windowing.IWindowPlatform"/> type.
+            </summary>
+        </member>
+    </members>
+</doc>

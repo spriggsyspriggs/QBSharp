@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Windowing.Sdl</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.Windowing.Sdl.SdlWindowing">
+            <summary>
+            Contains utility methods for working with the SDL windowing backend.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Sdl.SdlWindowing.RegisterPlatform">
+            <summary>
+            Registers this platform with the <see cref="T:Silk.NET.Windowing.Window"/> class so that the <see cref="M:Silk.NET.Windowing.Window.Create(Silk.NET.Windowing.WindowOptions)"/> method
+            may be used to create SDL windows.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Sdl.SdlWindowing.CreateFrom(System.Void*,Silk.NET.Core.Contexts.IGLContext)">
+            <summary>
+            Creates a <see cref="T:Silk.NET.Windowing.IView"/> from the given native handle using <see cref="M:Silk.NET.SDL.Sdl.CreateWindowFrom(System.Void*)"/>.
+            </summary>
+            <remarks>
+            <para>
+            The returned <see cref="T:Silk.NET.Windowing.IView" /> may also implement <see cref="T:Silk.NET.Windowing.IWindow"/>. To determine whether this is the
+            case, use as <c>is</c> or <c>as</c> expression.
+            </para>
+            <para>
+            SDL doesn't obtain context information from existing native window handles. As a result, if you'd like to
+            use the returned <see cref="T:Silk.NET.Windowing.IView"/> as a <see cref="T:Silk.NET.Core.Contexts.IGLContextSource"/> (or use any other windowing OpenGL
+            features), you'll need to configure this window with a custom context. Pass a <see cref="T:Silk.NET.Core.Contexts.IGLContext" /> into
+            the ctx parameter to do this.
+            </para>
+            </remarks>
+            <param name="handle">The native window handle to create a SDL view/window from.</param>
+            <param name="ctx">The custom <see cref="T:Silk.NET.Core.Contexts.IGLContext"/> wrapper over the existing OpenGL context.</param>
+            <returns>
+            A <see cref="T:Silk.NET.Windowing.IView" /> wrapper over the existing handle. May also implement <see cref="T:Silk.NET.Windowing.IWindow" />.
+            </returns>
+        </member>
+        <member name="M:Silk.NET.Windowing.Sdl.SdlWindowing.Use">
+            <summary>
+            Prioritizes the SDL windowing platform over others.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Windowing.Sdl.SdlWindowing.IsViewSdl(Silk.NET.Windowing.IView)">
+            <summary>
+            Gets a value indicating whether the given view is an SDL view.
+            </summary>
+            <returns>Whether the given view is an SDL view.</returns>
+        </member>
+    </members>
+</doc>

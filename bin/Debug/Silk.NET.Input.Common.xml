@@ -1,0 +1,1746 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Input.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.Input.ButtonName">
+            <summary>
+            The different names a <see cref="T:Silk.NET.Input.Button"/> can have.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.Unknown">
+            <summary>
+            Indicates that the input backend was unable to determine a button name for the button in question, or it does not support it.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.A">
+            <summary>
+            The A button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.B">
+            <summary>
+            The B button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.X">
+            <summary>
+            The X button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.Y">
+            <summary>
+            The Y button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.LeftBumper">
+            <summary>
+            The left bumper.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.RightBumper">
+            <summary>
+            The right bumper.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.Back">
+            <summary>
+            The back button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.Start">
+            <summary>
+            The start button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.Home">
+            <summary>
+            The home button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.LeftStick">
+            <summary>
+            Clicking the left stick.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.RightStick">
+            <summary>
+            Clicking the right stick.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.DPadUp">
+            <summary>
+            Up on the D-Pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.DPadRight">
+            <summary>
+            Right on the D-Pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.DPadDown">
+            <summary>
+            Down on the D-Pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.ButtonName.DPadLeft">
+            <summary>
+            Left on the D-Pad.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.CursorMode">
+            <summary>
+            Mode used by a cursor.
+            </summary>
+            <remarks>
+            Not every backend supports every cursor mode. Check availability with
+            <see cref="M:Silk.NET.Input.ICursor.IsSupported(Silk.NET.Input.CursorMode)"/> before changing the cursor mode.
+            </remarks>
+        </member>
+        <member name="F:Silk.NET.Input.CursorMode.Normal">
+            <summary>
+            Cursor is visible and has no restrictions on mobility.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.CursorMode.Hidden">
+            <summary>
+            Cursor is invisible, and has no restrictions on mobility.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.CursorMode.Disabled">
+            <summary>
+            Cursor is invisible, and is restricted to the center of the screen.
+            </summary>
+            <remarks>
+            Only supported by GLFW, throws on SDL if used.
+            </remarks>
+        </member>
+        <member name="F:Silk.NET.Input.CursorMode.Raw">
+            <summary>
+            Cursor is invisible, and is restricted to the center of the screen. Mouse motion is not scaled.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.CursorType">
+            <summary>
+            Type used by a cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.CursorType.Standard">
+            <summary>
+            One of the standard cursors.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.CursorType.Custom">
+            <summary>
+            A custom cursor provided as image data.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.DeadzoneMethod">
+            <summary>
+            Available methods to control the deadzone of a control stick.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.DeadzoneMethod.Traditional">
+            <summary>
+            The traditional deadzone method, where the reported value is directly proportional with the actual value until the actual value is within the deadzone - the reported value will be 0 in this case.
+            </summary>
+            <remarks>
+            <para>
+            y = x except where |x| is between 0 and d
+            </para>
+            <para>
+            y is the output, x is the raw value, and d is the deadzone value.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Silk.NET.Input.DeadzoneMethod.AdaptiveGradient">
+            <summary>
+            A deadzone method where the reported value adapts to the range of the deadzone. If the value is within the deadzone, the reported value is 0.
+            After exiting the deadzone, the reported value increases from 0 (when the actual value first exits the deadzone) to 1 (when the actual value is 1).
+            </summary>
+            <remarks>
+            <para>
+            y = (1 - d)x + (d * sgn(x))
+            </para>
+            <para>
+            y is the output, x is the raw value, and d is the deadzone value.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:Silk.NET.Input.Key">
+            <summary>
+            Represents the keys on a keyboard.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Unknown">
+            <summary>
+            An unknown key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Space">
+            <summary>
+            The spacebar key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Apostrophe">
+            <summary>
+            The apostrophe key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Comma">
+            <summary>
+            The comma key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Minus">
+            <summary>
+            The minus key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Period">
+            <summary>
+            The period key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Slash">
+            <summary>
+            The slash key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number0">
+            <summary>
+            The 0 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.D0">
+            <summary>
+            The 0 key; alias for <see cref="F:Silk.NET.Input.Key.Number0"/>
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number1">
+            <summary>
+            The 1 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number2">
+            <summary>
+            The 2 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number3">
+            <summary>
+            The 3 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number4">
+            <summary>
+            The 4 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number5">
+            <summary>
+            The 5 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number6">
+            <summary>
+            The 6 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number7">
+            <summary>
+            The 7 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number8">
+            <summary>
+            The 8 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Number9">
+            <summary>
+            The 9 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Semicolon">
+            <summary>
+            The semicolon key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Equal">
+            <summary>
+            The equal key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.A">
+            <summary>
+            The A key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.B">
+            <summary>
+            The B key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.C">
+            <summary>
+            The C key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.D">
+            <summary>
+            The D key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.E">
+            <summary>
+            The E key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F">
+            <summary>
+            The F key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.G">
+            <summary>
+            The G key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.H">
+            <summary>
+            The H key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.I">
+            <summary>
+            The I key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.J">
+            <summary>
+            The J key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.K">
+            <summary>
+            The K key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.L">
+            <summary>
+            The L key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.M">
+            <summary>
+            The M key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.N">
+            <summary>
+            The N key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.O">
+            <summary>
+            The O key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.P">
+            <summary>
+            The P key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Q">
+            <summary>
+            The Q key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.R">
+            <summary>
+            The R key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.S">
+            <summary>
+            The S key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.T">
+            <summary>
+            The T key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.U">
+            <summary>
+            The U key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.V">
+            <summary>
+            The V key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.W">
+            <summary>
+            The W key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.X">
+            <summary>
+            The X key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Y">
+            <summary>
+            The Y key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Z">
+            <summary>
+            The Z key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.LeftBracket">
+            <summary>
+            The left bracket(opening bracket) key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.BackSlash">
+            <summary>
+            The backslash.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.RightBracket">
+            <summary>
+            The right bracket(closing bracket) key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.GraveAccent">
+            <summary>
+            The grave accent key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.World1">
+            <summary>
+            Non US keyboard layout key 1.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.World2">
+            <summary>
+            Non US keyboard layout key 2.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Escape">
+            <summary>
+            The escape key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Enter">
+            <summary>
+            The enter key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Tab">
+            <summary>
+            The tab key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Backspace">
+            <summary>
+            The backspace key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Insert">
+            <summary>
+            The insert key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Delete">
+            <summary>
+            The delete key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Right">
+            <summary>
+            The right arrow key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Left">
+            <summary>
+            The left arrow key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Down">
+            <summary>
+            The down arrow key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Up">
+            <summary>
+            The up arrow key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.PageUp">
+            <summary>
+            The page up key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.PageDown">
+            <summary>
+            The page down key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Home">
+            <summary>
+            The home key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.End">
+            <summary>
+            The end key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.CapsLock">
+            <summary>
+            The caps lock key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.ScrollLock">
+            <summary>
+            The scroll lock key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.NumLock">
+            <summary>
+            The num lock key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.PrintScreen">
+            <summary>
+            The print screen key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Pause">
+            <summary>
+            The pause key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F1">
+            <summary>
+            The F1 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F2">
+            <summary>
+            The F2 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F3">
+            <summary>
+            The F3 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F4">
+            <summary>
+            The F4 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F5">
+            <summary>
+            The F5 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F6">
+            <summary>
+            The F6 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F7">
+            <summary>
+            The F7 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F8">
+            <summary>
+            The F8 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F9">
+            <summary>
+            The F9 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F10">
+            <summary>
+            The F10 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F11">
+            <summary>
+            The F11 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F12">
+            <summary>
+            The F12 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F13">
+            <summary>
+            The F13 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F14">
+            <summary>
+            The F14 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F15">
+            <summary>
+            The F15 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F16">
+            <summary>
+            The F16 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F17">
+            <summary>
+            The F17 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F18">
+            <summary>
+            The F18 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F19">
+            <summary>
+            The F19 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F20">
+            <summary>
+            The F20 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F21">
+            <summary>
+            The F21 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F22">
+            <summary>
+            The F22 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F23">
+            <summary>
+            The F23 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F24">
+            <summary>
+            The F24 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.F25">
+            <summary>
+            The F25 key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad0">
+            <summary>
+            The 0 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad1">
+            <summary>
+            The 1 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad2">
+            <summary>
+            The 2 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad3">
+            <summary>
+            The 3 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad4">
+            <summary>
+            The 4 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad5">
+            <summary>
+            The 5 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad6">
+            <summary>
+            The 6 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad7">
+            <summary>
+            The 7 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad8">
+            <summary>
+            The 8 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Keypad9">
+            <summary>
+            The 9 key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadDecimal">
+            <summary>
+            The decimal key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadDivide">
+            <summary>
+            The divide key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadMultiply">
+            <summary>
+            The multiply key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadSubtract">
+            <summary>
+            The subtract key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadAdd">
+            <summary>
+            The add key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadEnter">
+            <summary>
+            The enter key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.KeypadEqual">
+            <summary>
+            The equal key on the key pad.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.ShiftLeft">
+            <summary>
+            The left shift key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.ControlLeft">
+            <summary>
+            The left control key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.AltLeft">
+            <summary>
+            The left alt key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.SuperLeft">
+            <summary>
+            The left super key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.ShiftRight">
+            <summary>
+            The right shift key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.ControlRight">
+            <summary>
+            The right control key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.AltRight">
+            <summary>
+            The right alt key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.SuperRight">
+            <summary>
+            The right super key.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Key.Menu">
+            <summary>
+            The menu key.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.MouseButton">
+            <summary>
+            Represents the indices of the mouse buttons.
+            </summary>
+            <remarks>
+            <para>
+            The number of buttons provided depends on the input backend currently being used.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Unknown">
+            <summary>
+            Indicates the input backend was unable to determine a button name for the button in question, or it does not support it.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Left">
+            <summary>
+            The left mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Right">
+            <summary>
+            The right mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Middle">
+            <summary>
+            The middle mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button4">
+            <summary>
+            The fourth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button5">
+            <summary>
+            The fifth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button6">
+            <summary>
+            The sixth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button7">
+            <summary>
+            The seventh mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button8">
+            <summary>
+            The eighth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button9">
+            <summary>
+            The ninth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button10">
+            <summary>
+            The tenth mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button11">
+            <summary>
+            The eleventh mouse button.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.MouseButton.Button12">
+            <summary>
+            The twelth mouse button.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.Position2D">
+            <summary>
+            Represents the position of a joystick <see cref="T:Silk.NET.Input.Hat"/>
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.Centered">
+            <summary>
+            The hat is centered.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.Up">
+            <summary>
+            The hat is pressed up.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.Down">
+            <summary>
+            The hat is pressed down.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.Left">
+            <summary>
+            The hat is pressed left.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.Right">
+            <summary>
+            The hat is pressed right.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.UpLeft">
+            <summary>
+            The hat is pressed up and to the left.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.UpRight">
+            <summary>
+            The hat is pressed up and to the right.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.DownLeft">
+            <summary>
+            The hat is pressed down and to the left.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.Position2D.DownRight">
+            <summary>
+            The hat is pressed down and to the right.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.StandardCursor">
+            <summary>
+            Standard cursors.
+            </summary>
+            <remarks>
+            Not every backend supports every standard cursor. Check availability with
+            <see cref="M:Silk.NET.Input.ICursor.IsSupported(Silk.NET.Input.StandardCursor)"/> before changing to a standard cursor.
+            </remarks>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.Default">
+            <summary>
+            Default cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.Arrow">
+            <summary>
+            Regular arrow cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.IBeam">
+            <summary>
+            Text input I-beam cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.Crosshair">
+            <summary>
+            Crosshair cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.Hand">
+            <summary>
+            Hand cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.HResize">
+            <summary>
+            Horizontal resize arrow cursor.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Input.StandardCursor.VResize">
+            <summary>
+            Vertical resize arrow cursor.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.GamepadExtensions">
+            <summary>
+            Contains handy extensions for fetching buttons on gamepads.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.A(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.A" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.B(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.B" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.X(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.X" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.Y(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.Y" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.LeftBumper(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.LeftBumper" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.RightBumper(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.RightBumper" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.Back(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.Back" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.Start(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.Start" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.Home(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.Home" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.LeftStick(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.LeftStick" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.RightStick(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.RightStick" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.DPadUp(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.DPadUp" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.DPadRight(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.DPadRight" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.DPadDown(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.DPadDown" /> button.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.GamepadExtensions.DPadLeft(Silk.NET.Input.IGamepad)">
+            <summary>
+            Gets the <see cref="F:Silk.NET.Input.ButtonName.DPadLeft" /> button.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.InputPlatformAttribute">
+            <summary>
+            An assembly attribute which points the registrar to a type that implements <see cref="T:Silk.NET.Input.IInputPlatform"/>
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.InputPlatformAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a <see cref="T:Silk.NET.Input.InputPlatformAttribute"/> using the given type.
+            </summary>
+            <param name="type">The <see cref="T:Silk.NET.Input.IInputPlatform"/> type.</param>
+        </member>
+        <member name="P:Silk.NET.Input.InputPlatformAttribute.Type">
+            <summary>
+            The <see cref="T:Silk.NET.Input.IInputPlatform"/> type.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.InputWindowExtensions">
+            <summary>
+            Extensions related to input contexts and windows.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.InputWindowExtensions.Platforms">
+            <summary>
+            Gets the input platforms currently registered with the input system.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.InputWindowExtensions.CreateInput(Silk.NET.Windowing.IView)">
+            <summary>
+            Creates an input context for the given view.
+            </summary>
+            <param name="view">The view to create an input context for.</param>
+            <returns>The new input context.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            Couldn't create input context as the view was not initialized. This occurs when you try to create an InputContext without initializing the view first.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            Couldn't find a suitable input platform for this view. This occurs when you've created a window/view using
+            a window platform, but haven't installed
+            </exception>
+        </member>
+        <member name="M:Silk.NET.Input.InputWindowExtensions.Add(Silk.NET.Input.IInputPlatform)">
+            <summary>
+            Adds this input platform to the platform list. Shouldn't be used unless writing your own input backend.
+            </summary>
+            <param name="platform">The platform to add.</param>
+        </member>
+        <member name="M:Silk.NET.Input.InputWindowExtensions.Remove(Silk.NET.Input.IInputPlatform)">
+            <summary>
+            Removes this input platform from the platform list. Shouldn't be used unless writing your own input backend.
+            </summary>
+            <param name="platform">The platform to remove.</param>
+        </member>
+        <member name="M:Silk.NET.Input.InputWindowExtensions.TryAdd(System.String)">
+            <summary>
+            Attempts to load the given assembly by name, checks for a <see cref="T:Silk.NET.Input.IInputPlatform"/>, if one is found it
+            is added to the list. Shouldn't be used unless writing your own input backend.
+            </summary>
+            <param name="assemblyName">The assembly's name to load.</param>
+            <returns>Whether the operation was successful.</returns>
+        </member>
+        <member name="T:Silk.NET.Input.ICursor">
+            <summary>
+            An interface representing a mouse cursor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.Type">
+            <summary>
+            Type of the cursor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.StandardCursor">
+            <summary>
+            Standard cursor to use.
+            </summary>
+            <remarks>
+            Is only used if <see cref="P:Silk.NET.Input.ICursor.Type"/> is <see cref="F:Silk.NET.Input.CursorType.Standard"/>.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.CursorMode">
+            <summary>
+            Mode of the cursor.
+            </summary>
+            <remarks>
+            See <see cref="P:Silk.NET.Input.ICursor.CursorMode"/> for details.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.IsConfined">
+            <summary>
+            Determines whether the cursor is locked to the bounds of the view/window of this input context.
+            </summary>
+            <remarks>
+            Only supported by SDL, will have no effect on GLFW.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.HotspotX">
+            <summary>
+            Hotspot on the X axis.
+            </summary>
+            <remarks>
+            Is only used if <see cref="P:Silk.NET.Input.ICursor.Type"/> is <see cref="F:Silk.NET.Input.CursorType.Custom"/>.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.HotspotY">
+            <summary>
+            Hotspot on the Y axis.
+            </summary>
+            <remarks>
+            Is only used if <see cref="P:Silk.NET.Input.ICursor.Type"/> is <see cref="F:Silk.NET.Input.CursorType.Custom"/>.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.ICursor.Image">
+            <summary>
+            Image data for the cursor.
+            </summary>
+            <remarks>
+            The image MUST be in 32-bit RGBA, non-premultiplied, and in little-endian format.
+            Is only used if <see cref="P:Silk.NET.Input.ICursor.Type"/> is <see cref="F:Silk.NET.Input.CursorType.Custom"/>.
+            </remarks>
+        </member>
+        <member name="M:Silk.NET.Input.ICursor.IsSupported(Silk.NET.Input.CursorMode)">
+            <summary>
+            Checks whether or not a specific <see cref="P:Silk.NET.Input.ICursor.CursorMode"/> is supported.
+            </summary>
+            <param name="mode">The mode to check for.</param>
+            <returns>Whether or not this mode is supported.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.ICursor.IsSupported(Silk.NET.Input.StandardCursor)">
+            <summary>
+            Checks whether or not a specific <see cref="P:Silk.NET.Input.ICursor.StandardCursor"/> is supported.
+            </summary>
+            <param name="standardCursor">The standard cursor to check for.</param>
+            <returns>Whether or not this standard cursor is supported.</returns>
+        </member>
+        <member name="T:Silk.NET.Input.IGamepad">
+            <summary>
+            Represents a gamepad/controller with a set amount of thumbsticks, buttons, and triggers.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IGamepad.Buttons">
+            <summary>
+            A list of all available buttons.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IGamepad.Thumbsticks">
+            <summary>
+            A list of all available thumbsticks.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IGamepad.Triggers">
+            <summary>
+            A list of all available triggers.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IGamepad.VibrationMotors">
+            <summary>
+            A list of all available motors.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IGamepad.Deadzone">
+            <summary>
+            The deadzone for this gamepad.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IGamepad.ButtonDown">
+            <summary>
+            Called when a button is pressed.
+            </summary>
+            <remarks>
+            This event is only called when the button is first pressed, and not every frame where the button is still pressed.
+            </remarks>
+        </member>
+        <member name="E:Silk.NET.Input.IGamepad.ButtonUp">
+            <summary>
+            Called when a button is released.
+            </summary>
+            <remarks>
+            This event is only called when the button is first released, and not every frame where the button is still released.
+            </remarks>
+        </member>
+        <member name="E:Silk.NET.Input.IGamepad.ThumbstickMoved">
+            <summary>
+            Called when a thumbstick is moved.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IGamepad.TriggerMoved">
+            <summary>
+            Called when a trigger is moved.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.IInputContext">
+            <summary>
+            An interface representing the input context.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.Handle">
+            <summary>
+            A handle to the underlying input context.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.Gamepads">
+            <summary>
+            A list of all available gamepads.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.Joysticks">
+            <summary>
+            A list of all available joysticks.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.Keyboards">
+            <summary>
+            A list of all available keyboards.
+            <remarks>
+            On some backends, this list may only contain 1 item. This is most likely because the underlying API doesn't
+            support multiple keyboards.
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.Mice">
+            <summary>
+            A list of all available mice.
+            </summary>
+            <remarks>
+            On some backends, this list may only contain 1 item. This is most likely because the underlying API doesn't
+            support multiple mice.
+            </remarks>
+        </member>
+        <member name="P:Silk.NET.Input.IInputContext.OtherDevices">
+            <summary>
+            A list of all other available input devices.
+            </summary>
+            <remarks>
+            On some backends, this list might be empty. This is most likely because the underlying API doesn't
+            support other devices.
+            </remarks>
+        </member>
+        <member name="E:Silk.NET.Input.IInputContext.ConnectionChanged">
+            <summary>
+            Called when the connection status of a device changes.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.IInputDevice">
+            <summary>
+            Generic interface representing an input device.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputDevice.Name">
+            <summary>
+            The name of this device, as reported by the hardware.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputDevice.Index">
+            <summary>
+            The index of this device.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IInputDevice.IsConnected">
+            <summary>
+            Whether or not this device is currently connected.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.IInputPlatform">
+            <summary>
+            An interface representing an input platform.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.IInputPlatform.IsApplicable(Silk.NET.Windowing.IView)">
+            <summary>
+            If this platform is applicable to this window.
+            </summary>
+            <param name="view">The window to check.</param>
+            <returns>Whether or not this platform is applicable.</returns>
+            <remarks>
+            Generally, each Input package will also have a matching Windowing package,
+            and the Input package will reference the Windowing package. IsApplicable works
+            by checking that the given window is an instance created by the Windowing
+            package the Input package references. For example, GlfwInputPlatform will only
+            be applicable for a GlfwWindow.
+            </remarks>
+        </member>
+        <member name="M:Silk.NET.Input.IInputPlatform.CreateInput(Silk.NET.Windowing.IView)">
+            <summary>
+            Get an input context for this view.
+            </summary>
+            <param name="view">The view to get a context for.</param>
+            <returns>The context.</returns>
+        </member>
+        <member name="T:Silk.NET.Input.IJoystick">
+            <summary>
+            Represents a joystick device with a set amount of axes, buttons, and hats.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IJoystick.Axes">
+            <summary>
+            A list of all axes reported by this joystick.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IJoystick.Buttons">
+            <summary>
+            A list of all buttons reported by this joystick.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IJoystick.Hats">
+            <summary>
+            A list of all hats reported by this joystick.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IJoystick.Deadzone">
+            <summary>
+            The deadzone to use for this joystick's axes.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IJoystick.ButtonDown">
+            <summary>
+            Called when a button on this joystick is pressed.
+            </summary>
+            <remarks>
+            This event is only called when the button is first pressed, and not every frame where the button is still pressed.
+            </remarks>
+        </member>
+        <member name="E:Silk.NET.Input.IJoystick.ButtonUp">
+            <summary>
+            Called when a button on this joystick is released.
+            </summary>
+            <remarks>
+            This event is only called when the button is first released, and not every frame where the button is still released.
+            </remarks>
+        </member>
+        <member name="E:Silk.NET.Input.IJoystick.AxisMoved">
+            <summary>
+            Called when an axis on this joystick is moved.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IJoystick.HatMoved">
+            <summary>
+            Called when a hat on this joystick is moved.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.IKeyboard">
+            <summary>
+            An interface representing a keyboard.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IKeyboard.SupportedKeys">
+            <summary>
+            The keys this keyboard has available.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IKeyboard.ClipboardText">
+            <summary>
+            The text currently in the clipboard.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.IKeyboard.IsKeyPressed(Silk.NET.Input.Key)">
+            <summary>
+            Checks if a specific key is pressed.
+            </summary>
+            <param name="key">The key to check.</param>
+            <returns>Whether or not the key is pressed.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.IKeyboard.IsScancodePressed(System.Int32)">
+            <summary>
+            Checks if a specific scancode is pressed.
+            </summary>
+            <param name="scancode">The scancode to check.</param>
+            <returns>Whether or not the scancode is pressed.</returns>
+        </member>
+        <member name="E:Silk.NET.Input.IKeyboard.KeyDown">
+            <summary>
+            Called when a key is pressed.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IKeyboard.KeyUp">
+            <summary>
+            Called when a key is released.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IKeyboard.KeyChar">
+            <summary>
+            Called when a character is received.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.IKeyboard.BeginInput">
+            <summary>
+            Begins taking keyboard input. Required on mobile, where keyboard input is usually delivered via an on-screen
+            keyboard.
+            Not required on desktop (it does nothing), but recommended to ensure easy porting to other platforms.
+            </summary>
+            <seealso cref="M:Silk.NET.Input.IKeyboard.EndInput"/>
+        </member>
+        <member name="M:Silk.NET.Input.IKeyboard.EndInput">
+            <summary>
+            Ends taking keyboard input. Required on mobile, where this method closes the on-screen keyboard.
+            Not required on desktop (it does nothing), but recommended to ensure easy porting to other platforms.
+            </summary>
+            <seealso cref="M:Silk.NET.Input.IKeyboard.BeginInput"/>
+        </member>
+        <member name="T:Silk.NET.Input.IMotor">
+            <summary>
+            A rumble motor inside of a gamepad.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMotor.Index">
+            <summary>
+            The index of this vibration motor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMotor.Speed">
+            <summary>
+            The motor's vibration intensity, between 0f and 1f.
+            </summary>
+            <remarks>
+            Some backends may truncate this value if variable intensity is not supported.
+            </remarks>
+        </member>
+        <member name="T:Silk.NET.Input.IMouse">
+            <summary>
+            An interface representing a mouse.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.SupportedButtons">
+            <summary>
+            The buttons this mouse has available.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.ScrollWheels">
+            <summary>
+            The scroll wheels this mouse has available.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.Position">
+            <summary>
+            The position of the cursor.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.Cursor">
+            <summary>
+            The cursor to use.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.DoubleClickTime">
+            <summary>
+            The maximum time in milliseconds between two
+            consecutive clicks to count as a double click.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.IMouse.DoubleClickRange">
+            <summary>
+            The maximum distance in pixels between two
+            consecutive clicks to count as a double click.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.IMouse.IsButtonPressed(Silk.NET.Input.MouseButton)">
+            <summary>
+            Checks if a specific button is currently pressed.
+            </summary>
+            <param name="btn">The button to check.</param>
+            <returns>Whether or not the button is pressed down.</returns>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.MouseDown">
+            <summary>
+            Called when a mouse button is pressed down.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.MouseUp">
+            <summary>
+            Called when a mouse button is released.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.Click">
+            <summary>
+            Called when a single click is performed.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.DoubleClick">
+            <summary>
+            Called when a double click is performed.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.MouseMove">
+            <summary>
+            Called when the mouse is moved.
+            </summary>
+        </member>
+        <member name="E:Silk.NET.Input.IMouse.Scroll">
+            <summary>
+            Called when the mouse wheel scrolls.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Input.Axis">
+            <summary>
+            Represents an axis on a joystick.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Axis.Index">
+            <summary>
+            The index of this axis, used to determine which axis it is.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Axis.Position">
+            <summary>
+            The position of this axis.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Axis.#ctor(System.Int32,System.Single)">
+            <summary>
+            Creates a new instance of the Axis struct.
+            </summary>
+            <param name="index">The index of the new axis.</param>
+            <param name="position">The position of the new axis.</param>
+        </member>
+        <member name="T:Silk.NET.Input.Button">
+            <summary>
+            Represents a joystick button.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Button.Name">
+            <summary>
+            The name of this button. Only guaranteed to be valid if this comes from an <see cref="T:Silk.NET.Input.IGamepad"/>.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Button.Index">
+            <summary>
+            The index of this button. Use this if this button comes from an <see cref="T:Silk.NET.Input.IJoystick"/>.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Button.Pressed">
+            <summary>
+            Whether or not this button is currently pressed.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Button.#ctor(Silk.NET.Input.ButtonName,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new instance of the Button struct.
+            </summary>
+            <param name="name">The name of this button.</param>
+            <param name="index">The index of this button.</param>
+            <param name="pressed">Whether or not this button is currently pressed.</param>
+        </member>
+        <member name="T:Silk.NET.Input.Deadzone">
+            <summary>
+            The deadzone to use for a joystick/gamepad's sticks.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Deadzone.Value">
+            <summary>
+            The size of the deadzone to use.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Deadzone.Method">
+            <summary>
+            The deadzone method to use.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Deadzone.#ctor(System.Single,Silk.NET.Input.DeadzoneMethod)">
+            <summary>
+            Creates a new instance of the Deadzone struct.
+            </summary>
+            <param name="value">The deadzone size.</param>
+            <param name="method">The deadzone method.</param>
+        </member>
+        <member name="M:Silk.NET.Input.Deadzone.Apply(System.Single)">
+            <summary>
+            Applies this deadzone to a raw input value.
+            </summary>
+            <param name="raw">The raw input value to apply the deadzone to.</param>
+            <returns>The input with deadzone applied.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the deadzone method isn't part of
+            <see cref="T:Silk.NET.Input.DeadzoneMethod"/></exception>
+        </member>
+        <member name="T:Silk.NET.Input.Hat">
+            <summary>
+            Represents a joystick hat.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Hat.Index">
+            <summary>
+            The index of this hat.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Hat.Position">
+            <summary>
+            The position of this hat.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Hat.#ctor(System.Int32,Silk.NET.Input.Position2D)">
+            <summary>
+            Creates a new instance of the Hat struct.
+            </summary>
+            <param name="index">The index of the hat.</param>
+            <param name="position">The position of the hat.</param>
+        </member>
+        <member name="T:Silk.NET.Input.ScrollWheel">
+            <summary>
+            Represents a scroll wheel.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.ScrollWheel.X">
+            <summary>
+            The X position of the scroll wheel.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.ScrollWheel.Y">
+            <summary>
+            The Y position of the scroll wheel.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.#ctor(System.Single,System.Single)">
+            <summary>
+            Creates a new instance of the scroll wheel struct.
+            </summary>
+            <param name="x">The X position of the scroll wheel.</param>
+            <param name="y">The Y position of the scroll wheel.</param>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.ToString">
+            <summary>Returns a String representing this <see cref="T:Silk.NET.Input.ScrollWheel"/> instance.</summary>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.ToString(System.String)">
+            <summary>Returns a String representing this <see cref="T:Silk.NET.Input.ScrollWheel"/> instance, using the specified format to format individual elements.</summary>
+            <param name="format">The format of individual elements.</param>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.ToString(System.String,System.IFormatProvider)">
+            <summary>Returns a String representing this <see cref="T:Silk.NET.Input.ScrollWheel"/> instance, using the specified format to format individual elements and the given IFormatProvider.</summary>
+            <param name="format">The format of individual elements.</param>
+            <param name="formatProvider">The format provider to use when formatting elements.</param>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.Equals(Silk.NET.Input.ScrollWheel)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.op_Equality(Silk.NET.Input.ScrollWheel,Silk.NET.Input.ScrollWheel)">
+            <summary>Returns a boolean indicating whether the two given ScrollWheels are equal.</summary>
+            <param name="left">The first ScrollWheel to compare.</param>
+            <param name="right">The second ScrollWheel to compare.</param>
+            <returns>True if the ScrollWheel are equal; False otherwise.</returns>
+        </member>
+        <member name="M:Silk.NET.Input.ScrollWheel.op_Inequality(Silk.NET.Input.ScrollWheel,Silk.NET.Input.ScrollWheel)">
+            <summary>Returns a boolean indicating whether the two given ScrollWheels are not equal.</summary>
+            <param name="left">The first ScrollWheel to compare.</param>
+            <param name="right">The second ScrollWheel to compare.</param>
+            <returns>True if the ScrollWheel are not equal; False if they are equal.</returns>
+        </member>
+        <member name="T:Silk.NET.Input.Thumbstick">
+            <summary>
+            A thumbstick on an <see cref="T:Silk.NET.Input.IGamepad"/>
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Thumbstick.Index">
+            <summary>
+            The index of this stick.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Thumbstick.X">
+            <summary>
+            The x-axis of the stick, from -1.0 to 1.0
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Thumbstick.Y">
+            <summary>
+            The y-axis of the stick, from -1.0 to 1.0
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Thumbstick.Position">
+            <summary>
+            The current position of the stick, from 0.0 to 1.0.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Thumbstick.Direction">
+            <summary>
+            The current direction of the stick, from -π to π.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Thumbstick.#ctor(System.Int32,System.Single,System.Single)">
+            <summary>
+            Creates a new instance of the Thumbstick struct.
+            </summary>
+            <param name="index">The index of the stick.</param>
+            <param name="x">The position of the stick.</param>
+            <param name="y">The direction of the stick.</param>
+        </member>
+        <member name="T:Silk.NET.Input.Trigger">
+            <summary>
+            Represents a trigger.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Trigger.Index">
+            <summary>
+            The index of this trigger.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Input.Trigger.Position">
+            <summary>
+            The position of this trigger; how far down it's currently pressed.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Input.Trigger.#ctor(System.Int32,System.Single)">
+            <summary>
+            Creates a new instance of the Trigger struct.
+            </summary>
+            <param name="index">The index of this trigger.</param>
+            <param name="position">The position of this trigger.</param>
+        </member>
+    </members>
+</doc>
